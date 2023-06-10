@@ -1,27 +1,37 @@
 package com.healthsync.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Entity
+
+@Entity 
 @Table(name = "Tasks")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Task {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private User users;
-	private String title;
-	private String description;
-	private Date dueDate;
+	@OneToMany(cascade =  CascadeType.ALL) 
+	
+	private List<User> users = new ArrayList<>();
+    private int categoryId;
+    private String title;
+    private String description;
+    private LocalDate dueDate;
     private String priority;
     private boolean isCompleted;
-    private Date reminderDate;
-
+    private LocalDate reminderDate;
+	
 }
