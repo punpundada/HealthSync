@@ -11,7 +11,7 @@ import com.healthsync.exception.ResourceNotFoundException;
 import com.healthsync.repository.TaskRepository;
 import com.healthsync.repository.UserRepository;
 import com.healthsync.responce.TaskDto;
-import com.healthsync.responce.UserDto;
+
 import com.healthsync.service.TaskService;
 
 public class TaskServiceImpl implements TaskService {
