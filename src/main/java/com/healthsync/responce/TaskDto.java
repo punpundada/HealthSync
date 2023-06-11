@@ -1,6 +1,9 @@
 package com.healthsync.responce;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +15,7 @@ public class TaskDto {
 
 	
 	private int id;
+	private List<UserDto> users = new ArrayList<>();
     private int categoryId;
     private String title;
     private String description;
