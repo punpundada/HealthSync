@@ -1,11 +1,13 @@
 package com.healthsync.entity;
 
+import java.util.List;import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -32,8 +34,8 @@ public class User {
 	@Email
 	private String email;
 	private String profilePicture;
-	@ManyToOne()
-	private Task task;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Task> tasks;
 	 
 	
 	

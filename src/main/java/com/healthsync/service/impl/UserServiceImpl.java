@@ -5,13 +5,14 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.healthsync.entity.User;
 import com.healthsync.exception.ResourceNotFoundException;
 import com.healthsync.repository.UserRepository;
 import com.healthsync.responce.UserDto;
 import com.healthsync.service.UserService;
-
+@Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired

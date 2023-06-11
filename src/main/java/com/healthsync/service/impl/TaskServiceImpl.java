@@ -1,9 +1,11 @@
 package com.healthsync.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.healthsync.entity.Task;
 import com.healthsync.entity.User;
@@ -14,6 +16,7 @@ import com.healthsync.responce.TaskDto;
 
 import com.healthsync.service.TaskService;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 	@Autowired
 	private TaskRepository taskRepository;
@@ -28,7 +31,9 @@ public class TaskServiceImpl implements TaskService {
 	public TaskDto saveTask(TaskDto taskDto ,Integer userID) {
 		User user = this.userRepository.findById(userID).orElseThrow(()-> new ResourceNotFoundException("User", "id", userID));
 		Task task = this.DtoToTask(taskDto);
-		user.setTask(task);
+		List<Task> userTasks = user.getTasks();
+		userTasks.add(task);
+		user.setTasks(userTasks);
 		this.userRepository.save(user);
 		Task task2 = this.taskRepository.save(task);
 		return this.TaskToDto(task2);
@@ -48,8 +53,12 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public List<TaskDto> getAllTasks(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		User user = this.userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", "id", userId));
+		List<Task> allTasks = user.getTasks();
+		
+		List<TaskDto> allTaskDto = allTasks.stream().map(task -> this.TaskToDto(task)).collect(Collectors.toList());
+		return allTaskDto;
 	}
 
 	@Override
