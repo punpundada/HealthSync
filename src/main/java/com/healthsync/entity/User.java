@@ -1,5 +1,6 @@
 package com.healthsync.entity;
 
+import java.util.ArrayList;
 import java.util.List;import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,5 +40,8 @@ public class User {
 	 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Reminder> allReminders;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<MedicationSchedule> allMedicationSchedule=new ArrayList<>();
 	
 }
