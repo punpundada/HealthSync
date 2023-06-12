@@ -15,7 +15,6 @@ public class HealthSyncApplication {
 	
 	@Bean
 	 ModelMapper mapper() {
-		
 		ModelMapper modelmapper = new ModelMapper();
 		modelmapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		return modelmapper;	

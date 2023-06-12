@@ -34,6 +34,6 @@ public class SchedulingConfiguration {
     }
     
     private void sendNotification(String email, String message) {
-        // Implementation for sending notification, e.g., sending an email or push notification
+        // Implementation for sending notification
     }
 }
