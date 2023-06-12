@@ -3,6 +3,7 @@ package com.healthsync.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.healthsync.entity.Reminder;
 import com.healthsync.entity.User;
@@ -11,6 +12,7 @@ import com.healthsync.repository.ReminderRepository;
 import com.healthsync.repository.UserRepository;
 import com.healthsync.service.ReminderService;
 
+@Service
 public class ReminderServiceImpl implements ReminderService {
 	@Autowired
 	private ReminderRepository reminderRepository;
