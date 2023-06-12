@@ -2,6 +2,10 @@ package com.healthsync.responce;
 
 
 
+import java.util.List;
+
+import com.healthsync.entity.Reminder;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +20,6 @@ public class UserDto {
 	private String email;
 	private String profilePicture;
 	private TaskDto task;
+	private List<Reminder> allReminders;
 
 }

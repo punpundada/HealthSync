@@ -37,6 +37,7 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Task> tasks;
 	 
-	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Reminder> allReminders;
 	
 }
