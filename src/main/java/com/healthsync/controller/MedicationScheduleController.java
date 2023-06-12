@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,13 +46,14 @@ public class MedicationScheduleController {
 		return new ResponseEntity<List<MedicationSchedule>>(allMeds , HttpStatus.OK);
 	}
 	
-	@PutMapping("/user/{userId}")
-	public ResponseEntity<MedicationSchedule> updateMeds(MedicationSchedule medicationSchedule , Integer medId){
+	@PutMapping("/{medId}")
+	public ResponseEntity<MedicationSchedule> updateMeds(@RequestBody MedicationSchedule medicationSchedule ,@PathVariable Integer medId){
 		MedicationSchedule schedule = this.medicationScheduleService.updateMedicationSchedule(medicationSchedule, medId);
 		return new ResponseEntity<MedicationSchedule>(schedule , HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ApiResponce> deleteMed(Integer medId){
+	@DeleteMapping("/{medId}")
+	public ResponseEntity<ApiResponce> deleteMed(@RequestBody Integer medId){
 		this.medicationScheduleService.deleteMedicationSchedule(medId);
 		return new ResponseEntity<ApiResponce>(new ApiResponce(String.format("The medicine with id %d is deleted", medId),true),HttpStatus.OK);
 	}
