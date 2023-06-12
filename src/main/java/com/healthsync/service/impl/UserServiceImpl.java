@@ -72,4 +72,14 @@ public class UserServiceImpl implements UserService {
 		return userDto;
 	}
 
+	@Override
+	public UserDto isLoggin(String email, String password) {
+		User user = this.userRepository.findByEmailandPassword(email, password);
+		if(user != null) {
+			return this.UserToDto(user);
+		}
+		return null;
+		
+	}
+
 }

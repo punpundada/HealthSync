@@ -10,6 +10,7 @@ public interface UserService {
 	public List<UserDto> getAllUsers();
 	public UserDto updateUser(UserDto uderDto , Integer userId);
 	public void deleteUser(Integer userId);
+	public UserDto isLoggin(String email , String password);
 	
 
 }
